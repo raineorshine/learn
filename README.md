@@ -38,7 +38,7 @@ The same file loads locally too: trusting the repo offers to install the
 marketplace, and on a machine that already has `learn` as a user skill, both
 copies then appear — `/learn` and `/learn:learn`.
 
-Locally:
+### Locally
 
 ```sh
 claude plugin marketplace add raineorshine/learn
