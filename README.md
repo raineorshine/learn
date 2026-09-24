@@ -19,8 +19,9 @@ Installed as a plugin, they are namespaced: `/learn:learn`,
 
 A cloud session sees neither a laptop's skills nor a repo's
 `extraKnownMarketplaces`: plugins reach it only through the cloud
-environment's setup script, which runs before Claude starts. Add this line to
-the setup script of each environment at claude.ai/code:
+environment's setup script, which runs before Claude starts. Add this line to the
+end of the setup script of each environment at claude.ai/code, after anything
+that writes `~/.claude/settings.json` wholesale:
 
 ```sh
 claude plugin marketplace add raineorshine/learn && claude plugin install learn@learn
