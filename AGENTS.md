@@ -31,6 +31,15 @@ Do not install the plugin on this machine: the user-level skills already load,
 and the plugin would add `learn:learn` and `learn:learn-organize` beside them.
 `claude --plugin-dir plugins/learn` loads the working tree for one session.
 
+## Cloud sessions
+
+Cloud sessions ignore `extraKnownMarketplaces` and `enabledPlugins` in a repo's
+checked-in `.claude/settings.json`: a routine run on a branch declaring this
+plugin there started without it. They load plugins installed by the cloud
+environment's setup script, so the README points there. Test a change to that
+advice with a real cloud run, not a local `claude -p`, which skips project
+marketplaces too.
+
 ## Git
 
 Conventional-commit subjects (`feat:`, `fix:`, `docs:`).

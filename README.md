@@ -17,26 +17,14 @@ Installed as a plugin, they are namespaced: `/learn:learn`,
 
 ### Cloud sessions
 
-A cloud session cannot see a laptop's user-level skills or plugins; it reads
-the repo's checked-in `.claude/settings.json`. Add this to that file in each
-repo whose cloud sessions should have the skills:
+A cloud session sees neither a laptop's skills nor a repo's
+`extraKnownMarketplaces`: plugins reach it only through the cloud
+environment's setup script, which runs before Claude starts. Add this line to
+the setup script of each environment at claude.ai/code:
 
-```json
-{
-  "extraKnownMarketplaces": {
-    "learn": {
-      "source": { "source": "github", "repo": "raineorshine/learn" }
-    }
-  },
-  "enabledPlugins": {
-    "learn@learn": true
-  }
-}
+```sh
+claude plugin marketplace add raineorshine/learn && claude plugin install learn@learn
 ```
-
-The same file loads locally too: trusting the repo offers to install the
-marketplace, and on a machine that already has `learn` as a user skill, both
-copies then appear — `/learn` and `/learn:learn`.
 
 ### Locally
 
