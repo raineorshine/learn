@@ -1,7 +1,7 @@
 {
   "name": "learn",
   "description": "/learn records a session's learnings in the repo's agent files and docs; /learn-organize reconciles them into a coherent whole.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
   "author": {
     "name": "Raine Revere",
