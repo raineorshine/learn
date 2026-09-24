@@ -1,0 +1,15 @@
+{
+  "name": "learn",
+  "description": "Skills that keep a repo's agent files and docs current and coherent.",
+  "owner": {
+    "name": "Raine Revere",
+    "email": "raine.revere@pm.me"
+  },
+  "plugins": [
+    {
+      "name": "learn",
+      "description": "/learn records a session's learnings in the repo's agent files and docs; /learn-organize reconciles them into a coherent whole.",
+      "source": "./plugins/learn"
+    }
+  ]
+}
