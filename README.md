@@ -15,8 +15,28 @@ Installed as a plugin, they are namespaced: `/learn:learn`,
 
 ## Install
 
-<!-- cloud:begin -->
-<!-- cloud:end -->
+### Cloud sessions
+
+A cloud session cannot see a laptop's user-level skills or plugins; it reads
+the repo's checked-in `.claude/settings.json`. Add this to that file in each
+repo whose cloud sessions should have the skills:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "learn": {
+      "source": { "source": "github", "repo": "raineorshine/learn" }
+    }
+  },
+  "enabledPlugins": {
+    "learn@learn": true
+  }
+}
+```
+
+The same file loads locally too: trusting the repo offers to install the
+marketplace, and on a machine that already has `learn` as a user skill, both
+copies then appear — `/learn` and `/learn:learn`.
 
 Locally:
 
