@@ -9,7 +9,25 @@ description: >
 
 Add relevant learnings from this session to repo agent files.
 
+**Sweep the whole conversation before judging any of it.** Recall favours the last stretch, so a
+pass that writes what comes to mind records the end of a long session and loses its middle. Walk
+the conversation in order, phase by phase — design, planning, building, review, verification,
+shipping, and whatever came after — and list every candidate before deciding on one: each
+correction the user made, each tool, hook, skill or platform that behaved differently than
+assumed, each dead end, each verification technique that worked, each rule another skill had to
+be overridden with, each finding a reviewer or a gate raised. Then apply the bars below to the
+list. The pass covers the whole conversation even when another skill invoked it as one of its
+steps — a ship's tail is not a smaller scope — and another skill's reason for not recording
+something (a capture skill finding the code already carries it) is that skill's bar, not this
+one's.
+
 - Repo agent files and repo documentation only. Do not modify global agent files, user agent files, or memories.
+- Create the agent file when the repo has none. A repo with no root `AGENTS.md` or `CLAUDE.md` gets
+  both before anything is recorded: `AGENTS.md` with a line saying what the project is, its gates,
+  and a Docs section linking each file or folder under `docs/` with a one-line claim, and `CLAUDE.md`
+  containing only `@AGENTS.md`. A learning written only to `docs/` is invisible without it, since no
+  session loads `docs/` on its own. Scaffolding skills such as Compound Engineering's never create
+  this file; they only add lines to one that already exists.
 - Do not overfit or overgeneralize. Try to find the sweet spot.
 - Write the claim that transfers, not the incident it came from. Figures that describe one artifact
   — timings, element counts, coordinates, anything that scales with what happened to be on screen —

@@ -53,7 +53,9 @@ there is no override file, no fallback filename, and no byte budget.
   (a subsystem, a workflow, a toolchain), not an arbitrary tail split to get under the limit.
   Leave behind in the instruction file the one-line claim that transfers plus a plain Markdown link to
   the doc — never an `@` import, which loads the doc along with the file — so an agent knows the topic
-  exists and when to open the file.
+  exists and when to open the file. Move sections by script rather than retyping them, then list every
+  sentence of the originals that no longer appears anywhere in the agent files and docs: each one must
+  be a cut you meant, and a claim dropped in a rewrite leaves no other trace.
 - A doc outside the launch chain is a patchwork too once it runs past about 300 lines under one
   heading, whatever the limits say. Split it by subsystem the same way — what a rule-writer needs
   apart from the machinery underneath — even when nothing above is over its limit.
@@ -72,16 +74,29 @@ there is no override file, no fallback filename, and no byte budget.
 - Group by where a rule applies, not by when it was added. A patchwork file reads in the order its
   rules were learned; regroup each rule under a heading for the area or task an agent is working on
   when it needs that rule. A doc you create or restructure takes the shape of the clearest existing
-  doc of its kind — subsystem, workflow, toolchain.
+  doc of its kind — subsystem, workflow, toolchain. Two shapes mark a patch inside a single doc: a
+  later paragraph retracting an earlier one ("the ceiling above was a misreading"), and a sentence
+  re-scoping everything after it ("what follows now describes X"). Rewrite the claim, or regroup under
+  a heading for X, and drop the history.
 - Re-read every file you touched end to end once the edits are in, and fix the seams piecemeal moves
   leave: a rule that contradicts its new neighbor, a point made twice, a link in any file to a heading
   that moved. Update or drop any path or command the touched files name that no longer exists.
 - Check the examples the docs cite against the code or config they describe. A doc that says a named
   rule, function or file still has a shape it lost reads as current until someone opens the source,
-  and a fresh reader cannot catch it — it has nothing to compare against.
+  and a fresh reader cannot catch it — it has nothing to compare against. Two sweeps are cheap: grep
+  every backticked identifier the docs cite against the source, and match every `doc > Heading`
+  citation against the target file's headings.
+- Check first any recipe that claims a safe way to exercise a write — trip a guard, stub a route,
+  post an impossible value. A later change to the code path can turn it into the real write with no
+  word changing in the doc, and it is the one stale claim that costs the user something when followed.
+- A doc that records a surface's removal ("since removed", "no longer") usually still describes it
+  in the present tense elsewhere. Grep the surface's name across the docs and rewrite what remains.
 - Before moving or renaming a section, search the whole repo for what points at it: skills and code
   comments reference docs by path and by quoted heading name (`docs/x.md "Heading"`), not only by
-  Markdown link, and those break silently.
+  Markdown link, and those break silently. Where what points at it is a record you may not edit —
+  another skill's files, a dated plan — keep the old file as an index naming each section and its new
+  home, so the path still resolves (a citation lint may require it) and a heading citation can still
+  be followed.
 - Test the result on a reader with no context before shipping; having read the old files, you can't
   see what the new ones fail to say. Give one fresh subagent 5–10 questions a new session would need
   answered, weighted toward the rules you moved or merged. Have it answer from the agent files and
@@ -97,4 +112,6 @@ there is no override file, no fallback filename, and no byte budget.
   then land it: follow the repo's own ship skill if it has one, and otherwise commit. Do not stop to
   ask; a reorganization is cheap to correct afterwards and expensive to lose to an unanswered question.
 - Land the reorganization alone. Never sweep unrelated working-tree changes into the ship — commit
-  only the agent files and docs this skill edited, and say what was left behind.
+  only the agent files and docs this skill edited, and say what was left behind. Code comments you
+  repointed at moved sections are part of it; they put source in the commit, so run the repo's gates
+  before landing.
