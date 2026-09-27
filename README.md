@@ -1,5 +1,7 @@
 # learn
 
+> **Archived.** Superseded by [raineorshine/skills](https://github.com/raineorshine/skills), which bundles `learn`, `learn-organize` and other skills in one plugin. Use that instead.
+
 Two Claude Code skills that keep a repo's agent instructions honest, packaged as
 a plugin so they run anywhere — including cloud sessions, which cannot see
 skills installed on a laptop.
